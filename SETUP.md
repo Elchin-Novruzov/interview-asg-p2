@@ -53,17 +53,29 @@
 cd demo_testing/backend
 ```
 
-2. Install dependencies:
+2. Copy environment template:
+```bash
+cp .env.example .env
+```
+
+3. **IMPORTANT**: Update database credentials in `.env` if needed
+   - The default uses `postgres:postgres` which works on most Windows/Linux installations
+   - Mac users (especially Homebrew) may need to change to their username:
+     ```
+     DATABASE_URL=postgresql://YOUR_MAC_USERNAME@localhost:5432/school_mgmt
+     ```
+
+4. Install dependencies:
 ```bash
 npm install
 ```
 
-3. Start the server:
+5. Start the server:
 ```bash
 npm start
 ```
 
-Server should start on http://localhost:5001 (or the port specified in .env)
+Server should start on http://localhost:5000
 
 ## Frontend Setup
 
@@ -72,12 +84,17 @@ Server should start on http://localhost:5001 (or the port specified in .env)
 cd demo_testing/frontend
 ```
 
-2. Install dependencies:
+2. Copy environment template:
+```bash
+cp .env.example .env
+```
+
+3. Install dependencies:
 ```bash
 npm install
 ```
 
-3. Start the development server:
+4. Start the development server:
 ```bash
 npm run dev
 ```
