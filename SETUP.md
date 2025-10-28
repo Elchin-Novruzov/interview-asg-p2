@@ -106,6 +106,24 @@ Frontend should start on http://localhost:5173
 - Email: admin@school-admin.com
 - Password: admin123
 
+**If login fails with "Invalid credential":** The admin password may need to be reset. Run this command:
+
+```bash
+# Generate a new password hash and update the database
+cd demo_testing/backend
+node -e "const argon2 = require('argon2'); argon2.hash('admin123').then(hash => console.log('Run this SQL command:'); console.log(\"UPDATE users SET password = '\"+hash+\"' WHERE email = 'admin@school-admin.com';\"));"
+```
+
+Then copy the SQL command output and run it:
+```bash
+psql -U postgres -d school_mgmt -c "<paste the SQL command here>"
+```
+
+Or on Mac (Homebrew):
+```bash
+psql -d school_mgmt -c "<paste the SQL command here>"
+```
+
 ## Common Issues
 
 **Database connection error:**
